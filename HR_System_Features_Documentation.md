@@ -62,144 +62,144 @@ This comprehensive HR system provides complete workforce management capabilities
 #### Employee
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| EmployeeId | UUID | PK | Unique employee identifier |
-| EmployeeNumber | String | UNIQUE | Employee number for identification |
-| FirstName | String | Required | Employee's first name |
-| LastName | String | Required | Employee's last name |
-| MiddleName | String | Optional | Employee's middle name |
-| Email | String | UNIQUE | Employee's email address |
-| Phone | String | Optional | Employee's phone number |
-| HireDate | Date | Required | Employee's hire date |
-| TerminationDate | Date | Optional | Employee's termination date |
-| Status | Enum | Required | Employee status (Active, Inactive, etc.) |
-| DepartmentId | UUID | FK | Reference to Department |
-| PositionId | UUID | FK | Reference to Position |
-| ManagerId | UUID | FK (Self) | Reference to Manager Employee |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| EmployeeId | UUID | PK | Unique employee identifier - Primary key for employee records |
+| EmployeeNumber | String | UNIQUE | Employee number for identification - Unique alphanumeric identifier for HR purposes |
+| FirstName | String | Required | Employee's first name - Legal first name for official records |
+| LastName | String | Required | Employee's last name - Legal last name for official records |
+| MiddleName | String | Optional | Employee's middle name - Middle name or initial if applicable |
+| Email | String | UNIQUE | Employee's email address - Primary communication email for system access |
+| Phone | String | Optional | Employee's phone number - Primary contact phone number |
+| HireDate | Date | Required | Employee's hire date - Official start date of employment |
+| TerminationDate | Date | Optional | Employee's termination date - End date of employment if applicable |
+| Status | Enum | Required | Employee status - **Values:** `ACTIVE`, `INACTIVE`, `TERMINATED`, `ON_LEAVE`, `SUSPENDED` |
+| DepartmentId | UUID | FK | Reference to Department - Links employee to organizational department |
+| PositionId | UUID | FK | Reference to Position - Links employee to job position |
+| ManagerId | UUID | FK (Self) | Reference to Manager Employee - Self-referencing FK to employee's direct manager |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### Department
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| DepartmentId | UUID | PK | Unique department identifier |
-| DepartmentCode | String | UNIQUE | Department code for identification |
-| DepartmentName | String | Required | Department name |
-| Description | String | Optional | Department description |
-| ParentDepartmentId | UUID | FK (Self) | Reference to parent department |
-| ManagerId | UUID | FK | Reference to department manager |
-| IsActive | Boolean | Required | Department active status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| DepartmentId | UUID | PK | Unique department identifier - Primary key for department records |
+| DepartmentCode | String | UNIQUE | Department code for identification - Short alphanumeric code for quick reference |
+| DepartmentName | String | Required | Department name - Official name of the organizational unit |
+| Description | String | Optional | Department description - Detailed description of department purpose and responsibilities |
+| ParentDepartmentId | UUID | FK (Self) | Reference to parent department - Self-referencing FK for hierarchical organization structure |
+| ManagerId | UUID | FK | Reference to department manager - Links to employee who manages this department |
+| IsActive | Boolean | Required | Department active status - Indicates if department is currently operational |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### Position
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| PositionId | UUID | PK | Unique position identifier |
-| PositionCode | String | UNIQUE | Position code for identification |
-| PositionTitle | String | Required | Position title |
-| Description | String | Optional | Position description |
-| DepartmentId | UUID | FK | Reference to Department |
-| JobCodeId | UUID | FK | Reference to JobCode |
-| SalaryGrade | String | Optional | Salary grade level |
-| IsActive | Boolean | Required | Position active status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| PositionId | UUID | PK | Unique position identifier - Primary key for position records |
+| PositionCode | String | UNIQUE | Position code for identification - Short alphanumeric code for position reference |
+| PositionTitle | String | Required | Position title - Official job title for the position |
+| Description | String | Optional | Position description - Detailed description of position responsibilities and requirements |
+| DepartmentId | UUID | FK | Reference to Department - Links position to organizational department |
+| JobCodeId | UUID | FK | Reference to JobCode - Links position to job classification |
+| SalaryGrade | String | Optional | Salary grade level - Compensation grade or level for this position |
+| IsActive | Boolean | Required | Position active status - Indicates if position is currently available |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### JobCode
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| JobCodeId | UUID | PK | Unique job code identifier |
-| JobCode | String | UNIQUE | Job code for identification |
-| JobTitle | String | Required | Job title |
-| Description | String | Optional | Job description |
-| Category | String | Optional | Job category |
-| IsExempt | Boolean | Required | FLSA exempt status |
-| DefaultHoursPerWeek | Decimal | Optional | Default weekly hours |
-| IsActive | Boolean | Required | Job code active status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| JobCodeId | UUID | PK | Unique job code identifier - Primary key for job code records |
+| JobCode | String | UNIQUE | Job code for identification - Short alphanumeric code for job classification |
+| JobTitle | String | Required | Job title - Official title for this job classification |
+| Description | String | Optional | Job description - Detailed description of job responsibilities and requirements |
+| Category | String | Optional | Job category - Classification category (e.g., "Management", "Technical", "Administrative") |
+| IsExempt | Boolean | Required | FLSA exempt status - Indicates if position is exempt from overtime pay under Fair Labor Standards Act |
+| DefaultHoursPerWeek | Decimal | Optional | Default weekly hours - Standard number of hours expected per week for this job |
+| IsActive | Boolean | Required | Job code active status - Indicates if job code is currently in use |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 ### 🟢 Time Management
 
 #### TimeEntryType
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| TimeEntryTypeId | UUID | PK | Unique time entry type identifier |
-| TypeCode | String | UNIQUE | Type code for identification |
-| TypeName | String | Required | Type name |
-| Description | String | Optional | Type description |
-| Category | Enum | Required | Time category (Work, Leave, etc.) |
-| IsPaid | Boolean | Required | Whether time is paid |
-| IsAccrualEligible | Boolean | Required | Whether time accrues leave |
-| AccrualFactor | Decimal | Optional | Accrual multiplier |
-| RequiresApproval | Boolean | Required | Whether approval is required |
-| MaxHoursPerDay | Decimal | Optional | Maximum hours per day |
-| MaxHoursPerWeek | Decimal | Optional | Maximum hours per week |
-| ColorCode | String | Optional | Display color code |
-| IsActive | Boolean | Required | Type active status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| TimeEntryTypeId | UUID | PK | Unique time entry type identifier - Primary key for time entry type records |
+| TypeCode | String | UNIQUE | Type code for identification - Short alphanumeric code for quick reference |
+| TypeName | String | Required | Type name - Display name for the time entry type |
+| Description | String | Optional | Type description - Detailed description of when and how to use this time type |
+| Category | Enum | Required | Time category - **Values:** `WORK`, `LEAVE`, `OVERTIME`, `HOLIDAY`, `BREAK`, `TRAINING`, `MEETING`, `OTHER` |
+| IsPaid | Boolean | Required | Whether time is paid - Indicates if this time type results in compensation |
+| IsAccrualEligible | Boolean | Required | Whether time accrues leave - Indicates if this time type contributes to leave accrual |
+| AccrualFactor | Decimal | Optional | Accrual multiplier - Multiplier applied to hours for accrual calculations (e.g., 1.0 for regular work, 0.5 for part-time) |
+| RequiresApproval | Boolean | Required | Whether approval is required - Indicates if this time type needs manager approval |
+| MaxHoursPerDay | Decimal | Optional | Maximum hours per day - Maximum hours allowed per day for this time type |
+| MaxHoursPerWeek | Decimal | Optional | Maximum hours per week - Maximum hours allowed per week for this time type |
+| ColorCode | String | Optional | Display color code - Hex color code for UI display (e.g., "#FF5733") |
+| IsActive | Boolean | Required | Type active status - Indicates if this time type is currently available for use |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### TimeEntry
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| TimeEntryId | UUID | PK | Unique time entry identifier |
-| EmployeeId | UUID | FK | Reference to Employee |
-| TimeEntryTypeId | UUID | FK | Reference to TimeEntryType |
-| ClockInOutId | UUID | FK (Nullable) | Reference to ClockInOut |
-| TimeSheetId | UUID | FK (Nullable) | Reference to TimeSheet |
-| HolidayId | UUID | FK (Nullable) | Reference to Holiday |
-| EntryDate | Date | Required | Entry date |
-| StartTime | Time | Required | Start time |
-| EndTime | Time | Required | End time |
-| BreakDuration | Decimal | Optional | Break duration in hours |
-| TotalHours | Decimal | Required | Total hours worked |
-| Description | String | Optional | Entry description |
-| ProjectCode | String | Optional | Project code |
-| CostCenter | String | Optional | Cost center |
-| Status | Enum | Required | Entry status |
-| SubmittedAt | DateTime | Optional | Submission timestamp |
-| ApprovedBy | UUID | FK (Nullable) | Reference to approver |
-| ApprovedAt | DateTime | Optional | Approval timestamp |
-| RejectionReason | String | Optional | Rejection reason |
-| CreatedBy | UUID | FK | Reference to creator |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| TimeEntryId | UUID | PK | Unique time entry identifier - Primary key for time entry records |
+| EmployeeId | UUID | FK | Reference to Employee - Links time entry to specific employee |
+| TimeEntryTypeId | UUID | FK | Reference to TimeEntryType - Links to the type of time being recorded |
+| ClockInOutId | UUID | FK (Nullable) | Reference to ClockInOut - Links to clock in/out record if applicable |
+| TimeSheetId | UUID | FK (Nullable) | Reference to TimeSheet - Links to timesheet if entry is part of a timesheet |
+| HolidayId | UUID | FK (Nullable) | Reference to Holiday - Links to holiday if entry is for holiday work |
+| EntryDate | Date | Required | Entry date - Date for which time is being recorded |
+| StartTime | Time | Required | Start time - Time when the activity began |
+| EndTime | Time | Required | End time - Time when the activity ended |
+| BreakDuration | Decimal | Optional | Break duration in hours - Total break time taken during this entry |
+| TotalHours | Decimal | Required | Total hours worked - Calculated total hours (EndTime - StartTime - BreakDuration) |
+| Description | String | Optional | Entry description - Additional details about the work performed |
+| ProjectCode | String | Optional | Project code - Code identifying the project this time is associated with |
+| CostCenter | String | Optional | Cost center - Code identifying the cost center for accounting purposes |
+| Status | Enum | Required | Entry status - **Values:** `DRAFT`, `SUBMITTED`, `APPROVED`, `REJECTED`, `PROCESSED` |
+| SubmittedAt | DateTime | Optional | Submission timestamp - When the entry was submitted for approval |
+| ApprovedBy | UUID | FK (Nullable) | Reference to approver - Employee who approved this time entry |
+| ApprovedAt | DateTime | Optional | Approval timestamp - When the entry was approved |
+| RejectionReason | String | Optional | Rejection reason - Reason provided if entry was rejected |
+| CreatedBy | UUID | FK | Reference to creator - Employee who created this time entry |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### TimeSheet
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| TimeSheetId | UUID | PK | Unique timesheet identifier |
-| EmployeeId | UUID | FK | Reference to Employee |
-| PayPeriodId | UUID | FK | Reference to PayPeriod |
-| StartDate | Date | Required | Timesheet start date |
-| EndDate | Date | Required | Timesheet end date |
-| TotalRegularHours | Decimal | Required | Total regular hours |
-| TotalOvertimeHours | Decimal | Required | Total overtime hours |
-| TotalLeaveHours | Decimal | Required | Total leave hours |
-| Status | Enum | Required | Timesheet status |
-| SubmittedAt | DateTime | Optional | Submission timestamp |
-| ApprovedBy | UUID | FK (Nullable) | Reference to approver |
-| ApprovedAt | DateTime | Optional | Approval timestamp |
-| RejectionReason | String | Optional | Rejection reason |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| TimeSheetId | UUID | PK | Unique timesheet identifier - Primary key for timesheet records |
+| EmployeeId | UUID | FK | Reference to Employee - Links timesheet to specific employee |
+| PayPeriodId | UUID | FK | Reference to PayPeriod - Links timesheet to specific pay period |
+| StartDate | Date | Required | Timesheet start date - First date covered by this timesheet |
+| EndDate | Date | Required | Timesheet end date - Last date covered by this timesheet |
+| TotalRegularHours | Decimal | Required | Total regular hours - Sum of all regular work hours in this timesheet |
+| TotalOvertimeHours | Decimal | Required | Total overtime hours - Sum of all overtime hours in this timesheet |
+| TotalLeaveHours | Decimal | Required | Total leave hours - Sum of all leave hours taken in this timesheet |
+| Status | Enum | Required | Timesheet status - **Values:** `DRAFT`, `SUBMITTED`, `APPROVED`, `REJECTED`, `PROCESSED` |
+| SubmittedAt | DateTime | Optional | Submission timestamp - When the timesheet was submitted for approval |
+| ApprovedBy | UUID | FK (Nullable) | Reference to approver - Employee who approved this timesheet |
+| ApprovedAt | DateTime | Optional | Approval timestamp - When the timesheet was approved |
+| RejectionReason | String | Optional | Rejection reason - Reason provided if timesheet was rejected |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### ClockInOut
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| ClockId | UUID | PK | Unique clock identifier |
-| EmployeeId | UUID | FK | Reference to Employee |
-| ShiftAssignmentId | UUID | FK | Reference to ShiftAssignment |
-| ClockInTime | DateTime | Required | Clock in timestamp |
-| ClockOutTime | DateTime | Optional | Clock out timestamp |
-| ClockInLocation | String | Optional | Clock in location |
-| ClockOutLocation | String | Optional | Clock out location |
-| ClockInMethod | String | Optional | Clock in method |
-| ClockOutMethod | String | Optional | Clock out method |
-| Status | Enum | Required | Clock status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| ClockId | UUID | PK | Unique clock identifier - Primary key for clock in/out records |
+| EmployeeId | UUID | FK | Reference to Employee - Links clock record to specific employee |
+| ShiftAssignmentId | UUID | FK | Reference to ShiftAssignment - Links to assigned shift for this clock session |
+| ClockInTime | DateTime | Required | Clock in timestamp - When employee clocked in |
+| ClockOutTime | DateTime | Optional | Clock out timestamp - When employee clocked out (null if still clocked in) |
+| ClockInLocation | String | Optional | Clock in location - Physical location where employee clocked in |
+| ClockOutLocation | String | Optional | Clock out location - Physical location where employee clocked out |
+| ClockInMethod | String | Optional | Clock in method - Method used to clock in (e.g., "Mobile App", "Time Clock", "Web Portal") |
+| ClockOutMethod | String | Optional | Clock out method - Method used to clock out (e.g., "Mobile App", "Time Clock", "Web Portal") |
+| Status | Enum | Required | Clock status - **Values:** `CLOCKED_IN`, `CLOCKED_OUT`, `BREAK`, `LUNCH`, `INVALID` |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 ### 🟡 Scheduling System
 
