@@ -206,321 +206,322 @@ This comprehensive HR system provides complete workforce management capabilities
 #### Schedule
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| ScheduleId | UUID | PK | Unique schedule identifier |
-| ScheduleName | String | Required | Schedule name |
-| DepartmentId | UUID | FK | Reference to Department |
-| StartDate | Date | Required | Schedule start date |
-| EndDate | Date | Required | Schedule end date |
-| Status | Enum | Required | Schedule status |
-| Notes | String | Optional | Schedule notes |
-| CreatedBy | UUID | FK | Reference to creator |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| ScheduleId | UUID | PK | Unique schedule identifier - Primary key for schedule records |
+| ScheduleName | String | Required | Schedule name - Descriptive name for the schedule (e.g., "Week 1 - Production") |
+| ScheduleType | Enum | Required | Schedule type - **Values:** `WEEKLY`, `BIWEEKLY`, `MONTHLY`, `CUSTOM`, `ROTATING`, `FIXED` |
+| DepartmentId | UUID | FK | Reference to Department - Links schedule to specific department |
+| StartDate | Date | Required | Schedule start date - First date this schedule is effective |
+| EndDate | Date | Required | Schedule end date - Last date this schedule is effective |
+| RequiredEmployees | Integer | Required | Required number of employees - Minimum number of employees needed for this schedule |
+| Status | Enum | Required | Schedule status - **Values:** `DRAFT`, `ACTIVE`, `INACTIVE`, `COMPLETED`, `CANCELLED` |
+| Notes | String | Optional | Schedule notes - Additional information or special instructions for this schedule |
+| CreatedBy | UUID | FK | Reference to creator - Employee who created this schedule |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### Shift
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| ShiftId | UUID | PK | Unique shift identifier |
-| ShiftName | String | Required | Shift name |
-| ShiftCode | String | Required | Shift code |
-| StartTime | Time | Required | Shift start time |
-| EndTime | Time | Required | Shift end time |
-| BreakDuration | Decimal | Optional | Break duration in hours |
-| DurationHours | Decimal | Required | Total shift duration |
-| Description | String | Optional | Shift description |
-| IsOvernight | Boolean | Required | Whether shift is overnight |
-| ColorCode | String | Optional | Display color code |
-| IsActive | Boolean | Required | Shift active status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| ShiftId | UUID | PK | Unique shift identifier - Primary key for shift records |
+| ShiftName | String | Required | Shift name - Descriptive name for the shift (e.g., "Day Shift", "Night Shift") |
+| ShiftCode | String | Required | Shift code - Short alphanumeric code for quick reference (e.g., "DAY", "NIGHT") |
+| StartTime | Time | Required | Shift start time - Time when the shift begins |
+| EndTime | Time | Required | Shift end time - Time when the shift ends |
+| BreakDuration | Decimal | Optional | Break duration in hours - Total break time included in this shift |
+| DurationHours | Decimal | Required | Total shift duration - Total hours for this shift (EndTime - StartTime - BreakDuration) |
+| Description | String | Optional | Shift description - Additional details about shift requirements or characteristics |
+| IsOvernight | Boolean | Required | Whether shift is overnight - Indicates if shift crosses midnight |
+| ColorCode | String | Optional | Display color code - Hex color code for UI display (e.g., "#3498DB") |
+| IsActive | Boolean | Required | Shift active status - Indicates if this shift is currently available for scheduling |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### ScheduleFrequency
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| ScheduleFrequencyId | UUID | PK | Unique frequency identifier |
-| ScheduleId | UUID | FK | Reference to Schedule |
-| ShiftId | UUID | FK | Reference to Shift |
-| DayOfWeek | Enum | Required | Day of week |
-| StartTime | Time | Required | Start time for this day |
-| EndTime | Time | Required | End time for this day |
-| RequiredEmployees | Integer | Required | Required number of employees |
-| IsActive | Boolean | Required | Frequency active status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| ScheduleFrequencyId | UUID | PK | Unique frequency identifier - Primary key for schedule frequency records |
+| ScheduleId | UUID | FK | Reference to Schedule - Links frequency to specific schedule |
+| ShiftId | UUID | FK | Reference to Shift - Links frequency to specific shift |
+| DayOfWeek | Enum | Required | Day of week - **Values:** `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY` |
+| StartTime | Time | Required | Start time for this day - Start time for this day of the week |
+| EndTime | Time | Required | End time for this day - End time for this day of the week |
+| IsActive | Boolean | Required | Frequency active status - Indicates if this frequency is currently active |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### ShiftAssignment
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| AssignmentId | UUID | PK | Unique assignment identifier |
-| ScheduleId | UUID | FK | Reference to Schedule |
-| EmployeeId | UUID | FK | Reference to Employee |
-| Status | Enum | Required | Assignment status |
-| Notes | String | Optional | Assignment notes |
-| AssignedAt | DateTime | Required | Assignment timestamp |
-| AssignedBy | UUID | FK | Reference to assigner |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| AssignmentId | UUID | PK | Unique assignment identifier - Primary key for shift assignment records |
+| ScheduleId | UUID | FK | Reference to Schedule - Links assignment to specific schedule |
+| EmployeeId | UUID | FK | Reference to Employee - Links assignment to specific employee |
+| Status | Enum | Required | Assignment status - **Values:** `ASSIGNED`, `CONFIRMED`, `CANCELLED`, `COMPLETED`, `NO_SHOW` |
+| Notes | String | Optional | Assignment notes - Additional information about this assignment |
+| AssignedAt | DateTime | Required | Assignment timestamp - When this assignment was created |
+| AssignedBy | UUID | FK | Reference to assigner - Employee who made this assignment |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### ShiftTrade
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| TradeId | UUID | PK | Unique trade identifier |
-| FromEmployeeId | UUID | FK | Reference to giving employee |
-| ToEmployeeId | UUID | FK | Reference to receiving employee |
-| FromAssignmentId | UUID | FK | Reference to giving assignment |
-| ToAssignmentId | UUID | FK | Reference to receiving assignment |
-| Status | Enum | Required | Trade status |
-| Reason | String | Optional | Trade reason |
-| NeedApproval | Boolean | Required | Whether approval is needed |
-| NeedRejectionApproval | Boolean | Required | Whether rejection needs approval |
-| AutoApproveIfEligible | Boolean | Required | Auto-approve if eligible |
-| RequireManagerApproval | Boolean | Required | Require manager approval |
-| AllowPartialTrade | Boolean | Required | Allow partial trade |
-| MaxTradeDuration | Decimal | Optional | Maximum trade duration |
-| RequestedAt | DateTime | Required | Request timestamp |
-| ApprovedAt | DateTime | Optional | Approval timestamp |
-| ApprovedBy | UUID | FK (Nullable) | Reference to approver |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| TradeId | UUID | PK | Unique trade identifier - Primary key for shift trade records |
+| FromEmployeeId | UUID | FK | Reference to giving employee - Employee who is giving up their shift |
+| ToEmployeeId | UUID | FK | Reference to receiving employee - Employee who is taking the shift |
+| FromAssignmentId | UUID | FK | Reference to giving assignment - Original assignment being traded away |
+| ToAssignmentId | UUID | FK | Reference to receiving assignment - Assignment being traded for |
+| Status | Enum | Required | Trade status - **Values:** `PENDING`, `APPROVED`, `REJECTED`, `CANCELLED`, `COMPLETED` |
+| Reason | String | Optional | Trade reason - Explanation for why the trade is being requested |
+| NeedApproval | Boolean | Required | Whether approval is needed - Indicates if this trade requires approval |
+| NeedRejectionApproval | Boolean | Required | Whether rejection needs approval - Indicates if rejecting this trade requires approval |
+| AutoApproveIfEligible | Boolean | Required | Auto-approve if eligible - Automatically approve if both employees are eligible |
+| RequireManagerApproval | Boolean | Required | Require manager approval - Indicates if manager approval is required |
+| AllowPartialTrade | Boolean | Required | Allow partial trade - Indicates if partial shift trades are allowed |
+| MaxTradeDuration | Decimal | Optional | Maximum trade duration - Maximum number of hours for this trade |
+| RequestedAt | DateTime | Required | Request timestamp - When the trade was requested |
+| ApprovedAt | DateTime | Optional | Approval timestamp - When the trade was approved |
+| ApprovedBy | UUID | FK (Nullable) | Reference to approver - Employee who approved this trade |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 ### 🔴 Accrual System
 
 #### AccrualType
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| AccrualTypeId | UUID | PK | Unique accrual type identifier |
-| TypeCode | String | UNIQUE | Type code for identification |
-| TypeName | String | Required | Type name |
-| Description | String | Optional | Type description |
-| Unit | Enum | Required | Accrual unit (Hours, Days) |
-| Category | Enum | Required | Accrual category |
-| MaxBalance | Decimal | Optional | Maximum balance allowed |
-| MaxCarryover | Decimal | Optional | Maximum carryover allowed |
-| CarryoverExpiryMonths | Integer | Optional | Carryover expiry in months |
-| IsActive | Boolean | Required | Type active status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| AccrualTypeId | UUID | PK | Unique accrual type identifier - Primary key for accrual type records |
+| TypeCode | String | UNIQUE | Type code for identification - Short alphanumeric code for quick reference (e.g., "PTO", "SICK") |
+| TypeName | String | Required | Type name - Display name for the accrual type (e.g., "Paid Time Off", "Sick Leave") |
+| Description | String | Optional | Type description - Detailed description of this accrual type and its usage |
+| Unit | Enum | Required | Accrual unit - **Values:** `HOURS`, `DAYS` |
+| Category | Enum | Required | Accrual category - **Values:** `VACATION`, `SICK_LEAVE`, `PERSONAL`, `HOLIDAY`, `COMPENSATORY`, `OTHER` |
+| MaxBalance | Decimal | Optional | Maximum balance allowed - Maximum amount that can be accrued (null for unlimited) |
+| MaxCarryover | Decimal | Optional | Maximum carryover allowed - Maximum amount that can be carried over to next period |
+| CarryoverExpiryMonths | Integer | Optional | Carryover expiry in months - Number of months before carryover expires (null for no expiry) |
+| IsActive | Boolean | Required | Type active status - Indicates if this accrual type is currently available |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### AccrualRule
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| AccrualRuleId | UUID | PK | Unique accrual rule identifier |
-| BusinessRuleId | UUID | FK | Reference to BusinessRule |
-| AccrualTypeId | UUID | FK | Reference to AccrualType |
-| TimeEntryTypeId | UUID | FK | Reference to TimeEntryType |
-| EffectivePayPeriodId | UUID | FK (Nullable) | Reference to PayPeriod |
-| RuleName | String | Required | Rule name |
-| JobCodeId | UUID | FK | Reference to JobCode |
-| DepartmentId | UUID | FK | Reference to Department |
-| EmployeeStatus | Enum | Required | Applicable employee status |
-| YearsOfServiceMin | Decimal | Optional | Minimum years of service |
-| YearsOfServiceMax | Decimal | Optional | Maximum years of service |
-| AccrualRate | Decimal | Required | Accrual rate |
-| AccrualFrequency | Enum | Required | Accrual frequency |
-| WaitingPeriodDays | Integer | Optional | Waiting period in days |
-| EffectiveDate | Date | Required | Rule effective date |
-| ExpiryDate | Date | Optional | Rule expiry date |
-| IsActive | Boolean | Required | Rule active status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| AccrualRuleId | UUID | PK | Unique accrual rule identifier - Primary key for accrual rule records |
+| BusinessRuleId | UUID | FK | Reference to BusinessRule - Links to the business rule that governs this accrual |
+| AccrualTypeId | UUID | FK | Reference to AccrualType - Links to the type of accrual this rule applies to |
+| TimeEntryTypeId | UUID | FK | Reference to TimeEntryType - Links to time entry type that triggers this accrual |
+| EffectivePayPeriodId | UUID | FK (Nullable) | Reference to PayPeriod - Pay period when this rule becomes effective |
+| RuleName | String | Required | Rule name - Descriptive name for this accrual rule |
+| JobCodeId | UUID | FK | Reference to JobCode - Job code this rule applies to |
+| DepartmentId | UUID | FK | Reference to Department - Department this rule applies to |
+| EmployeeStatus | Enum | Required | Applicable employee status - **Values:** `ACTIVE`, `ON_LEAVE`, `PART_TIME`, `FULL_TIME` |
+| YearsOfServiceMin | Decimal | Optional | Minimum years of service - Minimum years required for this rule to apply |
+| YearsOfServiceMax | Decimal | Optional | Maximum years of service - Maximum years for this rule to apply |
+| AccrualRate | Decimal | Required | Accrual rate - Rate at which accrual is earned (e.g., 0.08 for 8 hours per month) |
+| AccrualFrequency | Enum | Required | Accrual frequency - **Values:** `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY` |
+| WaitingPeriodDays | Integer | Optional | Waiting period in days - Days to wait before accrual begins |
+| EffectiveDate | Date | Required | Rule effective date - Date when this rule becomes effective |
+| ExpiryDate | Date | Optional | Rule expiry date - Date when this rule expires (null for no expiry) |
+| IsActive | Boolean | Required | Rule active status - Indicates if this rule is currently active |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### AccrualBalance
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| AccrualBalanceId | UUID | PK | Unique balance identifier |
-| EmployeeId | UUID | FK | Reference to Employee |
-| AccrualTypeId | UUID | FK | Reference to AccrualType |
-| LastUpdatedPayPeriodId | UUID | FK (Nullable) | Reference to PayPeriod |
-| CurrentBalance | Decimal | Required | Current balance |
-| PendingBalance | Decimal | Required | Pending balance |
-| UsedBalance | Decimal | Required | Used balance |
-| CarryoverBalance | Decimal | Required | Carryover balance |
-| CarryoverExpiryDate | Date | Optional | Carryover expiry date |
-| LastAccrualDate | Date | Optional | Last accrual date |
-| LastUpdated | DateTime | Required | Last update timestamp |
+| AccrualBalanceId | UUID | PK | Unique balance identifier - Primary key for accrual balance records |
+| EmployeeId | UUID | FK | Reference to Employee - Links balance to specific employee |
+| AccrualTypeId | UUID | FK | Reference to AccrualType - Links balance to specific accrual type |
+| LastUpdatedPayPeriodId | UUID | FK (Nullable) | Reference to PayPeriod - Last pay period when balance was updated |
+| CurrentBalance | Decimal | Required | Current balance - Current available balance for this accrual type |
+| PendingBalance | Decimal | Required | Pending balance - Balance pending approval or processing |
+| UsedBalance | Decimal | Required | Used balance - Total amount used from this accrual type |
+| CarryoverBalance | Decimal | Required | Carryover balance - Amount carried over from previous period |
+| CarryoverExpiryDate | Date | Optional | Carryover expiry date - Date when carryover balance expires |
+| LastAccrualDate | Date | Optional | Last accrual date - Date when balance was last updated with new accruals |
+| LastUpdated | DateTime | Required | Last update timestamp - When this balance record was last modified |
 
 #### AccrualTransaction
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| AccrualTransactionId | UUID | PK | Unique transaction identifier |
-| EmployeeId | UUID | FK | Reference to Employee |
-| AccrualTypeId | UUID | FK | Reference to AccrualType |
-| TimeEntryId | UUID | FK | Reference to TimeEntry |
-| PayPeriodId | UUID | FK (Nullable) | Reference to PayPeriod |
-| TransactionType | Enum | Required | Transaction type |
-| Amount | Decimal | Required | Transaction amount |
-| BalanceAfter | Decimal | Required | Balance after transaction |
-| ReferenceId | UUID | Optional | Reference identifier |
-| ReferenceType | Enum | Required | Reference type |
-| Description | String | Optional | Transaction description |
-| ProcessedDate | DateTime | Required | Processing date |
-| ProcessedBy | UUID | FK | Reference to processor |
-| CreatedAt | DateTime | Required | Record creation timestamp |
+| AccrualTransactionId | UUID | PK | Unique transaction identifier - Primary key for accrual transaction records |
+| EmployeeId | UUID | FK | Reference to Employee - Links transaction to specific employee |
+| AccrualTypeId | UUID | FK | Reference to AccrualType - Links transaction to specific accrual type |
+| TimeEntryId | UUID | FK | Reference to TimeEntry - Links transaction to time entry that triggered it |
+| PayPeriodId | UUID | FK (Nullable) | Reference to PayPeriod - Pay period when transaction occurred |
+| TransactionType | Enum | Required | Transaction type - **Values:** `ACCRUAL`, `USAGE`, `ADJUSTMENT`, `CARRYOVER`, `EXPIRY`, `TRANSFER` |
+| Amount | Decimal | Required | Transaction amount - Amount of accrual earned, used, or adjusted |
+| BalanceAfter | Decimal | Required | Balance after transaction - Employee's balance after this transaction |
+| ReferenceId | UUID | Optional | Reference identifier - ID of related record (e.g., leave request, adjustment) |
+| ReferenceType | Enum | Required | Reference type - **Values:** `TIME_ENTRY`, `LEAVE_REQUEST`, `ADJUSTMENT`, `CARRYOVER`, `SYSTEM` |
+| Description | String | Optional | Transaction description - Human-readable description of this transaction |
+| ProcessedDate | DateTime | Required | Processing date - Date when transaction was processed |
+| ProcessedBy | UUID | FK | Reference to processor - Employee or system that processed this transaction |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
 
 ### 🔵 Payroll System
 
 #### PayPeriod
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| PayPeriodId | UUID | PK | Unique pay period identifier |
-| PeriodName | String | Required | Pay period name |
-| StartDate | Date | Required | Period start date |
-| EndDate | Date | Required | Period end date |
-| PayDate | Date | Required | Pay date |
-| Frequency | Enum | Required | Pay frequency |
-| Status | Enum | Required | Period status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| PayPeriodId | UUID | PK | Unique pay period identifier - Primary key for pay period records |
+| PeriodName | String | Required | Pay period name - Descriptive name for the pay period (e.g., "2024-01-01 to 2024-01-15") |
+| StartDate | Date | Required | Period start date - First date covered by this pay period |
+| EndDate | Date | Required | Period end date - Last date covered by this pay period |
+| PayDate | Date | Required | Pay date - Date when employees receive their pay |
+| Frequency | Enum | Required | Pay frequency - **Values:** `WEEKLY`, `BIWEEKLY`, `SEMIMONTHLY`, `MONTHLY`, `QUARTERLY`, `ANNUALLY` |
+| Status | Enum | Required | Period status - **Values:** `DRAFT`, `OPEN`, `CLOSED`, `PROCESSED`, `CANCELLED` |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### Payroll
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| PayrollId | UUID | PK | Unique payroll identifier |
-| EmployeeId | UUID | FK | Reference to Employee |
-| PayPeriodId | UUID | FK | Reference to PayPeriod |
-| RegularHours | Decimal | Required | Regular hours worked |
-| OvertimeHours | Decimal | Required | Overtime hours worked |
-| DoubleTimeHours | Decimal | Required | Double time hours worked |
-| HolidayHours | Decimal | Required | Holiday hours worked |
-| SickHours | Decimal | Required | Sick hours used |
-| VacationHours | Decimal | Required | Vacation hours used |
-| PersonalHours | Decimal | Required | Personal hours used |
-| OtherHours | Decimal | Required | Other hours |
-| GrossPay | Decimal | Required | Gross pay amount |
-| NetPay | Decimal | Required | Net pay amount |
-| TotalDeductions | Decimal | Required | Total deductions |
-| Status | Enum | Required | Payroll status |
-| CalculatedAt | DateTime | Required | Calculation timestamp |
-| ApprovedBy | UUID | FK (Nullable) | Reference to approver |
-| ApprovedAt | DateTime | Optional | Approval timestamp |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| PayrollId | UUID | PK | Unique payroll identifier - Primary key for payroll records |
+| EmployeeId | UUID | FK | Reference to Employee - Links payroll to specific employee |
+| PayPeriodId | UUID | FK | Reference to PayPeriod - Links payroll to specific pay period |
+| RegularHours | Decimal | Required | Regular hours worked - Total regular hours for this pay period |
+| OvertimeHours | Decimal | Required | Overtime hours worked - Total overtime hours for this pay period |
+| DoubleTimeHours | Decimal | Required | Double time hours worked - Total double time hours for this pay period |
+| HolidayHours | Decimal | Required | Holiday hours worked - Total holiday hours for this pay period |
+| SickHours | Decimal | Required | Sick hours used - Total sick leave hours used this pay period |
+| VacationHours | Decimal | Required | Vacation hours used - Total vacation hours used this pay period |
+| PersonalHours | Decimal | Required | Personal hours used - Total personal time hours used this pay period |
+| OtherHours | Decimal | Required | Other hours - Total other types of hours for this pay period |
+| GrossPay | Decimal | Required | Gross pay amount - Total gross pay before deductions |
+| NetPay | Decimal | Required | Net pay amount - Final pay amount after all deductions |
+| TotalDeductions | Decimal | Required | Total deductions - Sum of all deductions from gross pay |
+| Status | Enum | Required | Payroll status - **Values:** `DRAFT`, `CALCULATED`, `APPROVED`, `PROCESSED`, `CANCELLED` |
+| CalculatedAt | DateTime | Required | Calculation timestamp - When payroll was calculated |
+| ApprovedBy | UUID | FK (Nullable) | Reference to approver - Employee who approved this payroll |
+| ApprovedAt | DateTime | Optional | Approval timestamp - When payroll was approved |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### PayrollItem
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| PayrollItemId | UUID | PK | Unique item identifier |
-| PayrollId | UUID | FK | Reference to Payroll |
-| ItemType | Enum | Required | Item type |
-| ItemCode | String | Required | Item code |
-| ItemName | String | Required | Item name |
-| Amount | Decimal | Required | Item amount |
-| Hours | Decimal | Optional | Hours for this item |
-| Rate | Decimal | Optional | Rate for this item |
-| IsPreTax | Boolean | Required | Pre-tax status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
+| PayrollItemId | UUID | PK | Unique item identifier - Primary key for payroll item records |
+| PayrollId | UUID | FK | Reference to Payroll - Links item to specific payroll record |
+| ItemType | Enum | Required | Item type - **Values:** `EARNINGS`, `DEDUCTION`, `BENEFIT`, `TAX`, `BONUS`, `COMMISSION`, `REIMBURSEMENT` |
+| ItemCode | String | Required | Item code - Short code for this payroll item (e.g., "REG", "OT", "FED_TAX") |
+| ItemName | String | Required | Item name - Display name for this payroll item (e.g., "Regular Pay", "Overtime", "Federal Tax") |
+| Amount | Decimal | Required | Item amount - Dollar amount for this payroll item |
+| Hours | Decimal | Optional | Hours for this item - Number of hours associated with this item |
+| Rate | Decimal | Optional | Rate for this item - Hourly rate or percentage rate for this item |
+| IsPreTax | Boolean | Required | Pre-tax status - Indicates if this item is calculated before taxes |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
 
 ### 🟠 Rule Engine System
 
 #### BusinessRule
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| RuleId | UUID | PK | Unique rule identifier |
-| RuleName | String | Required | Rule name |
-| RuleType | Enum | Required | Rule type |
-| DepartmentId | UUID | FK (Nullable) | Reference to Department |
-| JobCodeId | UUID | FK (Nullable) | Reference to JobCode |
-| TimeEntryTypeId | UUID | FK (Nullable) | Reference to TimeEntryType |
-| Conditions | JSON | Required | Rule conditions |
-| Actions | JSON | Required | Rule actions |
-| Priority | Integer | Required | Rule priority |
-| EffectiveDate | Date | Required | Rule effective date |
-| ExpiryDate | Date | Optional | Rule expiry date |
-| IsActive | Boolean | Required | Rule active status |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| RuleId | UUID | PK | Unique rule identifier - Primary key for business rule records |
+| RuleName | String | Required | Rule name - Descriptive name for this business rule |
+| RuleType | Enum | Required | Rule type - **Values:** `OVERTIME`, `HOLIDAY`, `ACCRUAL`, `PREMIUM`, `DEDUCTION`, `BONUS` |
+| DepartmentId | UUID | FK (Nullable) | Reference to Department - Department this rule applies to (null for all departments) |
+| JobCodeId | UUID | FK (Nullable) | Reference to JobCode - Job code this rule applies to (null for all job codes) |
+| TimeEntryTypeId | UUID | FK (Nullable) | Reference to TimeEntryType - Time entry type this rule applies to (null for all types) |
+| Conditions | JSON | Required | Rule conditions - JSON object defining when this rule applies |
+| Actions | JSON | Required | Rule actions - JSON object defining what this rule does |
+| Priority | Integer | Required | Rule priority - Priority order for rule execution (lower numbers execute first) |
+| EffectiveDate | Date | Required | Rule effective date - Date when this rule becomes effective |
+| ExpiryDate | Date | Optional | Rule expiry date - Date when this rule expires (null for no expiry) |
+| IsActive | Boolean | Required | Rule active status - Indicates if this rule is currently active |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### OvertimeRule
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| OvertimeRuleId | UUID | PK | Unique overtime rule identifier |
-| BusinessRuleId | UUID | FK | Reference to BusinessRule |
-| ThresholdType | Enum | Required | Threshold type |
-| ThresholdHours | Decimal | Required | Threshold hours |
-| Multiplier | Decimal | Required | Overtime multiplier |
-| AppliesToHolidays | Boolean | Required | Applies to holidays |
-| AppliesToWeekends | Boolean | Required | Applies to weekends |
-| MaxOvertimeHours | Decimal | Optional | Maximum overtime hours |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| OvertimeRuleId | UUID | PK | Unique overtime rule identifier - Primary key for overtime rule records |
+| BusinessRuleId | UUID | FK | Reference to BusinessRule - Links to the business rule that governs this overtime rule |
+| ThresholdType | Enum | Required | Threshold type - **Values:** `DAILY`, `WEEKLY`, `BIWEEKLY`, `MONTHLY` |
+| ThresholdHours | Decimal | Required | Threshold hours - Number of hours before overtime applies |
+| Multiplier | Decimal | Required | Overtime multiplier - Multiplier for overtime pay (e.g., 1.5 for time and a half) |
+| AppliesToHolidays | Boolean | Required | Applies to holidays - Indicates if this rule applies to holiday work |
+| AppliesToWeekends | Boolean | Required | Applies to weekends - Indicates if this rule applies to weekend work |
+| MaxOvertimeHours | Decimal | Optional | Maximum overtime hours - Maximum overtime hours allowed per period |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### HolidayRule
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| HolidayRuleId | UUID | PK | Unique holiday rule identifier |
-| BusinessRuleId | UUID | FK | Reference to BusinessRule |
-| HolidayId | UUID | FK | Reference to Holiday |
-| PayType | Enum | Required | Pay type |
-| Multiplier | Decimal | Required | Holiday multiplier |
-| RequiresWork | Boolean | Required | Requires work |
-| FloatingHolidayRules | JSON | Optional | Floating holiday rules |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| HolidayRuleId | UUID | PK | Unique holiday rule identifier - Primary key for holiday rule records |
+| BusinessRuleId | UUID | FK | Reference to BusinessRule - Links to the business rule that governs this holiday rule |
+| HolidayId | UUID | FK | Reference to Holiday - Links to specific holiday this rule applies to |
+| PayType | Enum | Required | Pay type - **Values:** `REGULAR`, `HOLIDAY_PAY`, `DOUBLE_TIME`, `TRIPLE_TIME` |
+| Multiplier | Decimal | Required | Holiday multiplier - Multiplier for holiday pay (e.g., 2.0 for double time) |
+| RequiresWork | Boolean | Required | Requires work - Indicates if employee must work to receive holiday pay |
+| FloatingHolidayRules | JSON | Optional | Floating holiday rules - JSON object defining floating holiday logic |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### RuleExecution
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| RuleExecutionId | UUID | PK | Unique execution identifier |
-| TimeEntryId | UUID | FK | Reference to TimeEntry |
-| EmployeeId | UUID | FK | Reference to Employee |
-| PayPeriodId | UUID | FK | Reference to PayPeriod |
-| RuleType | Enum | Required | Rule type executed |
-| AppliedRules | JSON | Required | Applied rules |
-| CalculatedAmount | Decimal | Required | Calculated amount |
-| CalculatedHours | Decimal | Required | Calculated hours |
-| Status | Enum | Required | Execution status |
-| ProcessedAt | DateTime | Required | Processing timestamp |
-| CreatedAt | DateTime | Required | Record creation timestamp |
+| RuleExecutionId | UUID | PK | Unique execution identifier - Primary key for rule execution records |
+| TimeEntryId | UUID | FK | Reference to TimeEntry - Links execution to specific time entry |
+| EmployeeId | UUID | FK | Reference to Employee - Links execution to specific employee |
+| PayPeriodId | UUID | FK | Reference to PayPeriod - Links execution to specific pay period |
+| RuleType | Enum | Required | Rule type executed - **Values:** `OVERTIME`, `HOLIDAY`, `ACCRUAL`, `PREMIUM`, `DEDUCTION`, `BONUS` |
+| AppliedRules | JSON | Required | Applied rules - JSON array of rules that were applied |
+| CalculatedAmount | Decimal | Required | Calculated amount - Dollar amount calculated by rule execution |
+| CalculatedHours | Decimal | Required | Calculated hours - Hours calculated by rule execution |
+| Status | Enum | Required | Execution status - **Values:** `PENDING`, `SUCCESS`, `FAILED`, `SKIPPED` |
+| ProcessedAt | DateTime | Required | Processing timestamp - When rule execution was completed |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
 
 #### RuleProcessingStep
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| StepId | UUID | PK | Unique step identifier |
-| RuleExecutionId | UUID | FK | Reference to RuleExecution |
-| StepName | String | Required | Step name |
-| InputData | JSON | Required | Input data |
-| OutputData | JSON | Required | Output data |
-| Status | Enum | Required | Step status |
-| ProcessedAt | DateTime | Required | Processing timestamp |
-| ErrorMessage | String | Optional | Error message |
-| CreatedAt | DateTime | Required | Record creation timestamp |
+| StepId | UUID | PK | Unique step identifier - Primary key for rule processing step records |
+| RuleExecutionId | UUID | FK | Reference to RuleExecution - Links step to specific rule execution |
+| StepName | String | Required | Step name - Name of this processing step (e.g., "Validate Conditions", "Calculate Amount") |
+| InputData | JSON | Required | Input data - JSON object containing input data for this step |
+| OutputData | JSON | Required | Output data - JSON object containing output data from this step |
+| Status | Enum | Required | Step status - **Values:** `PENDING`, `PROCESSING`, `SUCCESS`, `FAILED`, `SKIPPED` |
+| ProcessedAt | DateTime | Required | Processing timestamp - When this step was completed |
+| ErrorMessage | String | Optional | Error message - Error message if step failed |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
 
 ### Additional Entities
 
 #### Holiday
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| HolidayId | UUID | PK | Unique holiday identifier |
-| HolidayName | String | Required | Holiday name |
-| HolidayDate | Date | Required | Holiday date |
-| IsObserved | Boolean | Required | Is observed holiday |
-| IsFloating | Boolean | Required | Is floating holiday |
-| AppliesToAll | Boolean | Required | Applies to all employees |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| HolidayId | UUID | PK | Unique holiday identifier - Primary key for holiday records |
+| HolidayName | String | Required | Holiday name - Name of the holiday (e.g., "New Year's Day", "Christmas") |
+| HolidayDate | Date | Required | Holiday date - Date when the holiday occurs |
+| IsObserved | Boolean | Required | Is observed holiday - Indicates if this is an observed holiday (may differ from actual date) |
+| IsFloating | Boolean | Required | Is floating holiday - Indicates if this is a floating holiday that can be taken anytime |
+| AppliesToAll | Boolean | Required | Applies to all employees - Indicates if this holiday applies to all employees |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 #### HolidayAssignment
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| HolidayAssignmentId | UUID | PK | Unique assignment identifier |
-| HolidayId | UUID | FK | Reference to Holiday |
-| EmployeeId | UUID | FK | Reference to Employee |
-| DepartmentId | UUID | FK | Reference to Department |
-| JobCodeId | UUID | FK | Reference to JobCode |
+| HolidayAssignmentId | UUID | PK | Unique assignment identifier - Primary key for holiday assignment records |
+| HolidayId | UUID | FK | Reference to Holiday - Links assignment to specific holiday |
+| EmployeeId | UUID | FK | Reference to Employee - Links assignment to specific employee (null for department/job code assignments) |
+| DepartmentId | UUID | FK | Reference to Department - Links assignment to specific department (null for employee/job code assignments) |
+| JobCodeId | UUID | FK | Reference to JobCode - Links assignment to specific job code (null for employee/department assignments) |
 
 #### EmployeeAvailability
 | Attribute | Type | Constraints | Description |
 |-----------|------|-------------|-------------|
-| AvailabilityId | UUID | PK | Unique availability identifier |
-| EmployeeId | UUID | FK | Reference to Employee |
-| DayOfWeek | Enum | Required | Day of week |
-| StartTime | Time | Required | Available start time |
-| EndTime | Time | Required | Available end time |
-| IsAvailable | Boolean | Required | Availability status |
-| EffectiveDate | Date | Required | Effective date |
-| ExpiryDate | Date | Optional | Expiry date |
-| CreatedAt | DateTime | Required | Record creation timestamp |
-| UpdatedAt | DateTime | Required | Record last update timestamp |
+| AvailabilityId | UUID | PK | Unique availability identifier - Primary key for employee availability records |
+| EmployeeId | UUID | FK | Reference to Employee - Links availability to specific employee |
+| DayOfWeek | Enum | Required | Day of week - **Values:** `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY` |
+| StartTime | Time | Required | Available start time - Time when employee becomes available on this day |
+| EndTime | Time | Required | Available end time - Time when employee stops being available on this day |
+| IsAvailable | Boolean | Required | Availability status - Indicates if employee is available during this time slot |
+| EffectiveDate | Date | Required | Effective date - Date when this availability becomes effective |
+| ExpiryDate | Date | Optional | Expiry date - Date when this availability expires (null for no expiry) |
+| CreatedAt | DateTime | Required | Record creation timestamp - Audit trail for record creation |
+| UpdatedAt | DateTime | Required | Record last update timestamp - Audit trail for record modifications |
 
 ---
 
