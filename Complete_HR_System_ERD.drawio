@@ -70,73 +70,73 @@
         <mxCell id="holiday-assignment-entity" value="HolidayAssignment&#xa;&#xa;PK HolidayAssignmentId (UUID)&#xa;FK HolidayId&#xa;FK EmployeeId&#xa;FK DepartmentId&#xa;FK JobCodeId" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e6f7ff;strokeColor=#1890ff;" parent="1" vertex="1">
           <mxGeometry x="1060" y="920" width="200" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="emp-dept-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="employee-entity" target="department-entity" edge="1">
+        <mxCell id="emp-dept-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="employee-entity" target="department-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="150" as="sourcePoint" />
             <mxPoint x="300" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="emp-pos-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="employee-entity" target="position-entity" edge="1">
+        <mxCell id="emp-pos-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="employee-entity" target="position-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="180" as="sourcePoint" />
             <mxPoint x="550" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="pos-job-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="position-entity" target="jobcode-entity" edge="1">
+        <mxCell id="pos-job-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="position-entity" target="jobcode-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="750" y="150" as="sourcePoint" />
             <mxPoint x="800" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="emp-time-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="employee-entity" target="time-entry-entity" edge="1">
+        <mxCell id="emp-time-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="employee-entity" target="time-entry-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="150" y="370" as="sourcePoint" />
             <mxPoint x="300" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="type-entry-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="time-entry-type-entity" target="time-entry-entity" edge="1">
+        <mxCell id="type-entry-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="time-entry-type-entity" target="time-entry-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="600" as="sourcePoint" />
             <mxPoint x="300" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="emp-sheet-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="employee-entity" target="timesheet-entity" edge="1">
+        <mxCell id="emp-sheet-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="employee-entity" target="timesheet-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="300" as="sourcePoint" />
             <mxPoint x="550" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="emp-clock-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="employee-entity" target="clock-in-out-entity" edge="1">
+        <mxCell id="emp-clock-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="employee-entity" target="clock-in-out-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="250" as="sourcePoint" />
             <mxPoint x="800" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="assignment-clock-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="shift-assignment-entity" target="clock-in-out-entity">
+        <mxCell id="assignment-clock-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="shift-assignment-entity" target="clock-in-out-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="1000" y="480" as="sourcePoint" />
             <mxPoint x="800" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="dept-sched-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="department-entity" target="schedule-entity">
+        <mxCell id="dept-sched-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="department-entity" target="schedule-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="500" y="150" as="sourcePoint" />
             <mxPoint x="1050" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="emp-assignment-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="employee-entity" target="shift-assignment-entity">
+        <mxCell id="emp-assignment-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="employee-entity" target="shift-assignment-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="200" as="sourcePoint" />
             <mxPoint x="1050" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="shift-schedule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="shift-entity" target="schedule-entity">
+        <mxCell id="shift-schedule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="shift-entity" target="schedule-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="1300" y="180" as="sourcePoint" />
             <mxPoint x="1050" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="sched-schedule-freq-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="schedule-entity" target="schedule-frequency-entity">
+        <mxCell id="sched-schedule-freq-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="schedule-entity" target="schedule-frequency-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="1150" y="330" as="sourcePoint" />
             <mxPoint x="1150" y="380" as="targetPoint" />
@@ -148,7 +148,7 @@
             <mxPoint x="1300" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="sched-assignment-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="schedule-entity" target="shift-assignment-entity">
+        <mxCell id="sched-assignment-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="schedule-entity" target="shift-assignment-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="1150" y="330" as="sourcePoint" />
             <mxPoint x="1150" y="620" as="targetPoint" />
@@ -160,13 +160,13 @@
             <mxPoint x="1300" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="emp-balance-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="employee-entity" target="accrual-balance-entity" edge="1">
+        <mxCell id="emp-balance-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="employee-entity" target="accrual-balance-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="300" as="sourcePoint" />
             <mxPoint x="1550" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="type-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="accrual-type-entity" target="accrual-rule-entity" edge="1">
+        <mxCell id="type-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="accrual-type-entity" target="accrual-rule-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="1750" y="200" as="sourcePoint" />
             <mxPoint x="1800" y="200" as="targetPoint" />
@@ -178,85 +178,85 @@
             <mxPoint x="1800" y="300" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="type-balance-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="accrual-type-entity" target="accrual-balance-entity" edge="1">
+        <mxCell id="type-balance-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="accrual-type-entity" target="accrual-balance-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="1650" y="330" as="sourcePoint" />
             <mxPoint x="1650" y="380" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="type-trans-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="accrual-type-entity" target="accrual-transaction-entity" edge="1">
+        <mxCell id="type-trans-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="accrual-type-entity" target="accrual-transaction-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="1750" y="300" as="sourcePoint" />
             <mxPoint x="1800" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="time-entry-accrual-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="time-entry-entity" target="accrual-transaction-entity">
+        <mxCell id="time-entry-accrual-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="time-entry-entity" target="accrual-transaction-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="500" y="600" as="sourcePoint" />
             <mxPoint x="1800" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="clock-time-entry-rel" value="" style="endArrow=ERone;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="clock-in-out-entity" target="time-entry-entity">
+        <mxCell id="clock-time-entry-rel" value="" style="endArrow=ERone;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="clock-in-out-entity" target="time-entry-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="900" y="500" as="sourcePoint" />
             <mxPoint x="300" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="timesheet-time-entry-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="timesheet-entity" target="time-entry-entity">
+        <mxCell id="timesheet-time-entry-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="timesheet-entity" target="time-entry-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="550" y="500" as="sourcePoint" />
             <mxPoint x="500" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="emp-payroll-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="employee-entity" target="payroll-entity" edge="1">
+        <mxCell id="emp-payroll-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="employee-entity" target="payroll-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="150" y="370" as="sourcePoint" />
             <mxPoint x="300" y="900" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="period-payroll-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="pay-period-entity" target="payroll-entity" edge="1">
+        <mxCell id="period-payroll-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="pay-period-entity" target="payroll-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="950" as="sourcePoint" />
             <mxPoint x="300" y="1000" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="period-sheet-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="pay-period-entity" target="timesheet-entity" edge="1">
+        <mxCell id="period-sheet-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="pay-period-entity" target="timesheet-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="820" as="sourcePoint" />
             <mxPoint x="550" y="700" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="payroll-item-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="payroll-entity" target="payroll-item-entity" edge="1">
+        <mxCell id="payroll-item-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="payroll-entity" target="payroll-item-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="500" y="1000" as="sourcePoint" />
             <mxPoint x="550" y="1000" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="holiday-assign-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="holiday-entity" target="holiday-assignment-entity" edge="1">
+        <mxCell id="holiday-assign-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="holiday-entity" target="holiday-assignment-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="1000" y="880" as="sourcePoint" />
             <mxPoint x="1050" y="880" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="holiday-time-entry-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="holiday-entity" target="time-entry-entity">
+        <mxCell id="holiday-time-entry-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="holiday-entity" target="time-entry-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="800" y="820" as="sourcePoint" />
             <mxPoint x="300" y="500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="period-accrual-transaction-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="pay-period-entity" target="accrual-transaction-entity">
+        <mxCell id="period-accrual-transaction-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="pay-period-entity" target="accrual-transaction-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="820" as="sourcePoint" />
             <mxPoint x="1800" y="460" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="period-accrual-balance-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="pay-period-entity" target="accrual-balance-entity">
+        <mxCell id="period-accrual-balance-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="pay-period-entity" target="accrual-balance-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="820" as="sourcePoint" />
             <mxPoint x="1550" y="380" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="period-accrual-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="pay-period-entity" target="accrual-rule-entity">
+        <mxCell id="period-accrual-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="pay-period-entity" target="accrual-rule-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="820" as="sourcePoint" />
             <mxPoint x="1800" y="50" as="targetPoint" />
@@ -265,7 +265,7 @@
         <mxCell id="employee-availability-entity" value="EmployeeAvailability&#xa;&#xa;PK AvailabilityId (UUID)&#xa;FK EmployeeId&#xa;DayOfWeek (ENUM)&#xa;StartTime&#xa;EndTime&#xa;IsAvailable&#xa;EffectiveDate&#xa;ExpiryDate&#xa;CreatedAt&#xa;UpdatedAt" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1310" y="770" width="200" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="emp-avail-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" parent="1" source="employee-entity" target="employee-availability-entity" edge="1">
+        <mxCell id="emp-avail-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" parent="1" source="employee-entity" target="employee-availability-entity" edge="1">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="300" as="sourcePoint" />
             <mxPoint x="1300" y="520" as="targetPoint" />
@@ -286,73 +286,73 @@
         <mxCell id="rule-processing-step-entity" value="RuleProcessingStep&#xa;&#xa;PK StepId (UUID)&#xa;FK RuleExecutionId&#xa;StepName&#xa;InputData (JSON)&#xa;OutputData (JSON)&#xa;Status (ENUM)&#xa;ProcessedAt&#xa;ErrorMessage&#xa;CreatedAt" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="1050" y="1100" width="200" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="business-rule-overtime-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="business-rule-entity" target="overtime-rule-entity">
+        <mxCell id="business-rule-overtime-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="business-rule-entity" target="overtime-rule-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="1200" as="sourcePoint" />
             <mxPoint x="300" y="1200" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="business-rule-holiday-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="business-rule-entity" target="holiday-rule-entity">
+        <mxCell id="business-rule-holiday-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="business-rule-entity" target="holiday-rule-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="1200" as="sourcePoint" />
             <mxPoint x="550" y="1200" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="business-rule-accrual-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="business-rule-entity" target="accrual-rule-entity">
+        <mxCell id="business-rule-accrual-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="business-rule-entity" target="accrual-rule-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="1200" as="sourcePoint" />
             <mxPoint x="1800" y="200" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="time-entry-rule-execution-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="time-entry-entity" target="rule-execution-entity">
+        <mxCell id="time-entry-rule-execution-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="time-entry-entity" target="rule-execution-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="400" y="840" as="sourcePoint" />
             <mxPoint x="800" y="1100" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="employee-rule-execution-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="employee-entity" target="rule-execution-entity">
+        <mxCell id="employee-rule-execution-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="employee-entity" target="rule-execution-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="150" y="370" as="sourcePoint" />
             <mxPoint x="800" y="1100" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="pay-period-rule-execution-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="pay-period-entity" target="rule-execution-entity">
+        <mxCell id="pay-period-rule-execution-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="pay-period-entity" target="rule-execution-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="250" y="1020" as="sourcePoint" />
             <mxPoint x="800" y="1100" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rule-execution-processing-step-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="rule-execution-entity" target="rule-processing-step-entity">
+        <mxCell id="rule-execution-processing-step-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="rule-execution-entity" target="rule-processing-step-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="1000" y="1200" as="sourcePoint" />
             <mxPoint x="1050" y="1200" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="holiday-holiday-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="holiday-entity" target="holiday-rule-entity">
+        <mxCell id="holiday-holiday-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="holiday-entity" target="holiday-rule-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="900" y="1000" as="sourcePoint" />
             <mxPoint x="570" y="1250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="time-entry-type-business-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="time-entry-type-entity" target="business-rule-entity">
+        <mxCell id="time-entry-type-business-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="time-entry-type-entity" target="business-rule-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="150" y="760" as="sourcePoint" />
             <mxPoint x="150" y="1100" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="department-business-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="department-entity" target="business-rule-entity">
+        <mxCell id="department-business-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="department-entity" target="business-rule-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="400" y="270" as="sourcePoint" />
             <mxPoint x="150" y="1100" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="jobcode-business-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="jobcode-entity" target="business-rule-entity">
+        <mxCell id="jobcode-business-rule-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="jobcode-entity" target="business-rule-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="900" y="270" as="sourcePoint" />
             <mxPoint x="150" y="1100" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rule-execution-payroll-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;" edge="1" parent="1" source="rule-execution-entity" target="payroll-entity">
+        <mxCell id="rule-execution-payroll-rel" value="" style="endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;endSize=8;startSize=8;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="rule-execution-entity" target="payroll-entity">
           <mxGeometry width="100" height="100" relative="1" as="geometry">
             <mxPoint x="800" y="1230" as="sourcePoint" />
             <mxPoint x="400" y="1070" as="targetPoint" />
